@@ -14,6 +14,8 @@ import {WalletItemComponent} from "../../components/wallet-item/wallet-item.comp
 import {ActivatedRoute} from "@angular/router";
 import {Wallet} from "../../model/wallet.entity";
 import {WalletApiService} from "../../../shared/services/wallet-api.service";
+import {Transaction} from "../../../shared/model/transaction.entity";
+import {TransactionApiService} from "../../../shared/services/transaction-api.service";
 
 @Component({
   selector: 'app-wallet-view',
@@ -26,6 +28,7 @@ import {WalletApiService} from "../../../shared/services/wallet-api.service";
 export class WalletViewComponent {
   earnings: Earning[];
   expenses: Expense[];
+  transactions: Transaction[];
   walletId: number;
   wallet: Wallet;
   cashflow!: any[];
@@ -33,9 +36,10 @@ export class WalletViewComponent {
 
 
   displayedColumns: string[] = [ 'id', 'walletId', 'amount', 'category_id', 'note', 'date', 'recurrent_id'];
+  displayedTransactionColumns: string[] = ['id', 'transaction_type_id', 'walletId', 'amount', 'date', 'note', 'category_id']
 
-  constructor( private earningApiService: EarningsApiService, private expensesApiService: ExpensesApiService, private route: ActivatedRoute, private walletApiService: WalletApiService) {
-    this.earnings = this.expenses = [];
+  constructor( private earningApiService: EarningsApiService, private expensesApiService: ExpensesApiService, private transactionsApiService: TransactionApiService, private route: ActivatedRoute, private walletApiService: WalletApiService) {
+    this.earnings = this.expenses = this.transactions = [];
     this.walletId = 0;
     this.wallet = new Wallet();
   }
@@ -54,6 +58,9 @@ export class WalletViewComponent {
     this.expensesApiService.getExpensesByWalletId(this.walletId).subscribe(expenses => {
       this.expenses = expenses;
     });
+    this.transactionsApiService.getTransactionsByWalletId(this.walletId).subscribe(transactions => {
+      this.transactions = transactions;
+    })
 
     this.cashflow = this.expenses.concat(this.earnings);
   }
