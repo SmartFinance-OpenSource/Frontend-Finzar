@@ -196,7 +196,7 @@
     {
       "id": 1,
       "transaction_type_id": 1,
-      "wallet_id": 312,
+      "walletId": 312,
       "amount": 2000,
       "date": "2024-07-01",
       "note": "Salario de julio",
@@ -205,7 +205,7 @@
     {
       "id": 2,
       "transaction_type_id": 1,
-      "wallet_id": 312,
+      "walletId": 312,
       "amount": 2000,
       "date": "2024-08-01",
       "note": "Salario de agosto",
@@ -214,7 +214,7 @@
     {
       "id": 3,
       "transaction_type_id": 1,
-      "wallet_id": 312,
+      "walletId": 312,
       "amount": 2000,
       "date": "2024-09-01",
       "note": "Salario de septiembre",
@@ -223,7 +223,7 @@
     {
       "id": 4,
       "transaction_type_id": 2,
-      "wallet_id": 312,
+      "walletId": 312,
       "amount": 50,
       "date": "2024-09-10",
       "note": "Salida al cine",
@@ -232,7 +232,7 @@
     {
       "id": 5,
       "transaction_type_id": 2,
-      "wallet_id": 312,
+      "walletId": 312,
       "amount": 100,
       "date": "2024-09-15",
       "note": "Visita al hospital de emergencia",
@@ -241,7 +241,7 @@
     {
       "id": 6,
       "transaction_type_id": 3,
-      "wallet_id": 312,
+      "walletId": 312,
       "amount": 50,
       "date": "2024-09-20",
       "note": "Transferencia a cuenta de ahorro",
