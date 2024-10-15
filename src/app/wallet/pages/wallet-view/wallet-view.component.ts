@@ -55,7 +55,6 @@ export class WalletViewComponent {
       this.expenses = expenses;
     });
 
-    this.cashflow = this.expenses.concat(this.earnings);
   }
 
   titles = [
