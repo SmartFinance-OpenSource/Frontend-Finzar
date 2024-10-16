@@ -20,7 +20,6 @@ import {MatDialog} from "@angular/material/dialog";
 import {
   CreateTransactionDialogComponent
 } from "../../components/create-transaction-dialog/create-transaction-dialog.component";
-import {data} from "autoprefixer";
 
 @Component({
   selector: 'app-wallet-view',

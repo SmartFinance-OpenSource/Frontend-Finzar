@@ -19,7 +19,6 @@ import {
 } from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatButton} from "@angular/material/button";
-import {data} from "autoprefixer";
 
 @Component({
   selector: 'app-create-transaction-dialog',
