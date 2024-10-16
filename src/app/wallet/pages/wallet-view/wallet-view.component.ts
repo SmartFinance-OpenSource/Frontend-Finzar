@@ -16,6 +16,14 @@ import {Wallet} from "../../model/wallet.entity";
 import {WalletApiService} from "../../../shared/services/wallet-api.service";
 import {Transaction} from "../../../shared/model/transaction.entity";
 import {TransactionApiService} from "../../../shared/services/transaction-api.service";
+import {
+  CreateSavingDialogComponent
+} from "../../../savings/components/create-and-edit-saving/create-saving-dialog.component";
+import {Saving} from "../../../savings/model/saving.entity";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  CreateTransactionDialogComponent
+} from "../../components/create-transaction-dialog/create-transaction-dialog.component";
 
 @Component({
   selector: 'app-wallet-view',
@@ -33,12 +41,10 @@ export class WalletViewComponent {
   wallet: Wallet;
   cashflow!: any[];
 
-
-
   displayedColumns: string[] = [ 'id', 'walletId', 'amount', 'category_id', 'note', 'date', 'recurrent_id'];
   displayedTransactionColumns: string[] = ['id', 'transaction_type_id', 'walletId', 'amount', 'date', 'note', 'category_id']
 
-  constructor( private earningApiService: EarningsApiService, private expensesApiService: ExpensesApiService, private transactionsApiService: TransactionApiService, private route: ActivatedRoute, private walletApiService: WalletApiService) {
+  constructor(private earningApiService: EarningsApiService, private expensesApiService: ExpensesApiService, private transactionsApiService: TransactionApiService, private route: ActivatedRoute, private walletApiService: WalletApiService, public dialog: MatDialog) {
     this.earnings = this.expenses = this.transactions = [];
     this.walletId = 0;
     this.wallet = new Wallet();
@@ -63,6 +69,12 @@ export class WalletViewComponent {
     })
 
     this.cashflow = this.expenses.concat(this.earnings);
+  }
+
+  onCreateTransaction() {
+    const dialogRef = this.dialog.open(CreateTransactionDialogComponent, {
+      hasBackdrop: true
+    });
   }
 
   titles = [
