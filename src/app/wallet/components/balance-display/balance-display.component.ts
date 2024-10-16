@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, numberAttribute} from '@angular/core';
 import {MatCardModule} from "@angular/material/card";
 import {NgClass} from "@angular/common";
 
@@ -10,6 +10,6 @@ import {NgClass} from "@angular/common";
   styleUrl: './balance-display.component.css'
 })
 export class BalanceDisplayComponent {
-  @Input() balance!: number;
+  @Input({transform: numberAttribute}) balance!: number;
   @Input() title!: string;
 }
