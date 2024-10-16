@@ -20,6 +20,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {
   CreateTransactionDialogComponent
 } from "../../components/create-transaction-dialog/create-transaction-dialog.component";
+import {data} from "autoprefixer";
 
 @Component({
   selector: 'app-wallet-view',
@@ -30,6 +31,7 @@ import {
   styleUrl: './wallet-view.component.css'
 })
 export class WalletViewComponent {
+
   earnings: Earning[];
   expenses: Expense[];
   transactions: Transaction[];
@@ -69,8 +71,22 @@ export class WalletViewComponent {
 
   onCreateTransaction() {
     const dialogRef = this.dialog.open(CreateTransactionDialogComponent, {
-      hasBackdrop: true
+      hasBackdrop: true,
+      maxWidth: '1200px',
+      width: '100%',
+      data: { walletId: this.walletId }
     });
+
+    dialogRef.afterClosed().subscribe((transaction: Transaction) => {
+      if (transaction) {
+        this.transactionsApiService.createTransaction(transaction).subscribe(() => {
+          this.transactionsApiService.getTransactionsByWalletId(this.walletId).subscribe(transactions => {
+            this.transactions = transactions;
+          });
+        });
+      }
+    })
+
   }
 
   titles = [

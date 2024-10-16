@@ -5,7 +5,7 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Type</mat-label>
-                <mat-select [(ngModel)]="newTransaction.transaction_type_id">
+                <mat-select required [(ngModel)]="newTransaction.transaction_type_id">
                     <mat-option *ngFor="let transactionType of transactionTypes" [value]="transactionType.id">
                         {{ transactionType.name }}
                     </mat-option >
@@ -21,7 +21,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="newTransaction.date">
+                <input matInput [matDatepicker]="picker" required [(ngModel)]="newTransaction.date">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -36,7 +36,7 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Category</mat-label>
-                <mat-select [(ngModel)]="newTransaction.category_id">
+                <mat-select required [(ngModel)]="newTransaction.category_id">
                     <mat-option *ngFor="let category of categories" [value]="category.id">
                         {{ category.name }}
                     </mat-option >
@@ -45,3 +45,8 @@
         </div>
     </div>
 </mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="onSubmit()">Save</button>
+    <button mat-button (click)="onClose()">Cancel</button>
+</mat-dialog-actions>
