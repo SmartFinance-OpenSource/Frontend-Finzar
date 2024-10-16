@@ -16,10 +16,6 @@ import {Wallet} from "../../model/wallet.entity";
 import {WalletApiService} from "../../../shared/services/wallet-api.service";
 import {Transaction} from "../../../shared/model/transaction.entity";
 import {TransactionApiService} from "../../../shared/services/transaction-api.service";
-import {
-  CreateSavingDialogComponent
-} from "../../../savings/components/create-and-edit-saving/create-saving-dialog.component";
-import {Saving} from "../../../savings/model/saving.entity";
 import {MatDialog} from "@angular/material/dialog";
 import {
   CreateTransactionDialogComponent
